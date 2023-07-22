@@ -1,8 +1,7 @@
-import { React, useEffect, useState } from 'react'
+import {React, useState, useEffect} from 'react'
 import { getMyArticles } from '../../fetch/fetch'
 import { Link } from 'react-router-dom'
-export default function Profile () {
-  const user = 'Rahul'
+export default function Articles ({article_type}) {
   const [myArticles, setMyArticles] = useState([])
 
   useEffect(() => {
@@ -20,12 +19,9 @@ export default function Profile () {
       </Link>
     )
   })
-
   return (
     <>
-      <h1>Hey {user}</h1>
-
-      <p>Here are all your posts:</p>
+      <p>The latest articles in {article_type}</p>
       <ol>{myArticleList}</ol>
     </>
   )

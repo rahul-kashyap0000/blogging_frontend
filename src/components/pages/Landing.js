@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { getMyArticles, getArticles } from '../../fetch/fetch'
+import { Link } from 'react-router-dom'
 
 export default function Landing () {
   const [myArticles, setMyArticles] = useState([])
@@ -20,11 +21,19 @@ export default function Landing () {
     callGetArticles()
   }, [])
 
-  const myArticleList = myArticles.map((article, index) => {
-    return <li key={index}>{article.title}</li>
+  const myArticleList = myArticles.map(article => {
+    return (
+      <Link key={article.id} to={'/article/' + article.id}>
+        <li key={article.id}>{article.title}</li>
+      </Link>
+    )
   })
-  const trendingArticleList = trendingArticles.map((article, index) => {
-    return <li key={index}>{article.title}</li>
+  const trendingArticleList = trendingArticles.map(article => {
+    return (
+      <Link key={article.id} to={'/article/' + article.id}>
+        <li key={article.id}>{article.title}</li>
+      </Link>
+    )
   })
   return (
     <div>
